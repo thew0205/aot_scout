@@ -50,7 +50,7 @@ class _TodoPageWidgetState extends State<TodoPageWidget> {
             return Scaffold(
               body: currentIndex == 0
                   ? const TodayTodoPage()
-                  : const ThisweekTodoPage(),
+                  : const ThisWeekTodoPage(),
               bottomNavigationBar: TodoBottomNavigationBar(
                 currentIndex: currentIndex,
                 onTap: (index) {

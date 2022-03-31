@@ -57,8 +57,9 @@ class Todolist with ChangeNotifier {
     final todayDay = today.weekday;
     return _todos.where((todo) {
       final day = todo.toBeCompleted.difference(today).inDays;
-      return (day > (todayDay - DateTime.daysPerWeek) ||
-          day < (1 - todayDay) && todo.completed);
+      return ((day > (todayDay - DateTime.daysPerWeek) ||
+              day < (1 - todayDay)) &&
+          todo.completed);
     }).toList();
   }
 
@@ -67,8 +68,9 @@ class Todolist with ChangeNotifier {
     final todayDay = today.weekday;
     return _todos.where((todo) {
       final day = todo.toBeCompleted.difference(today).inDays;
-      return (day > (todayDay - DateTime.daysPerWeek) ||
-          day < (1 - todayDay) && !todo.completed);
+      return ((day > (todayDay - DateTime.daysPerWeek) ||
+              day < (1 - todayDay)) &&
+          !todo.completed);
     }).toList();
   }
 

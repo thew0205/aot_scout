@@ -146,14 +146,18 @@ class MyApp extends StatelessWidget {
                   ),
                   textTheme: TextTheme(
                     headline4: Theme.of(context).textTheme.headline4!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'CabinSketch',
-                        ),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'CabinSketch',
+                        color: Colors.white),
                     headline5: Theme.of(context).textTheme.headline5!.copyWith(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'CabinSketch',
                         ),
                     headline6: Theme.of(context).textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'CabinSketch',
+                        ),
+                    subtitle1: Theme.of(context).textTheme.subtitle1!.copyWith(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'CabinSketch',
                         ),

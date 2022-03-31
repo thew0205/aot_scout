@@ -17,15 +17,6 @@ class _TodayTodoPageState extends State<TodayTodoPage> {
   @override
   Widget build(BuildContext context) {
     final todos = context.watch<Todolist>();
-    print('why not rebuilding');
-    print(todos.completedTodayTodos.length);
-    print(todos.uncompletedTodayTodos.length);
-    print(todos.todayTodos.length);
-
-    print(todos.thisWeekTodos.length);
-    print(todos.uncompletedThisWeekTodos.length);
-    print(todos.completedThisWeekTodos.length);
-    print('why not rebuilding');
 
     var todayTodos =
         isComplete ? todos.completedTodayTodos : todos.uncompletedTodayTodos;
@@ -33,13 +24,17 @@ class _TodayTodoPageState extends State<TodayTodoPage> {
       appBar: AppBar(
         title: const Text('TODO'),
         actions: [
-          IconButton(
-              onPressed: () {
-                setState(() {
-                  isComplete = !isComplete;
-                });
-              },
-              icon: Icon(Icons.change_circle))
+          TextButton(
+            onPressed: () {
+              setState(() {
+                isComplete = !isComplete;
+              });
+            },
+            child: Text(
+              isComplete ? "uncompleted" : "completd",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+          )
         ],
       ),
       body: todayTodos.isEmpty

@@ -89,7 +89,7 @@ class TodoBottomNavigationBar extends StatelessWidget {
               ],
             ),
             label:
-                'Today ${context.watch<Todolist>().uncompletedTodayTodos.length}'),
+                'This week ${context.watch<Todolist>().uncompletedTodayTodos.length}'),
       ],
       onTap: onTap,
     );

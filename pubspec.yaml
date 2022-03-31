@@ -1,0 +1,68 @@
+name: aot_scout
+description: A new Flutter project.
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  provider: ^6.0.2
+  shared_preferences: ^2.0.13
+  cupertino_icons: ^1.0.2
+  http: ^0.13.4
+  sqflite: ^2.0.2
+  path: ^1.8.0
+  path_provider: ^2.0.9
+  connectivity_plus: ^2.2.1
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  
+  flutter_lints: ^1.0.0
+
+
+flutter:
+  uses-material-design: true
+
+
+  assets:
+    - assets/image/
+
+  fonts:
+  - family: Pacifico
+    fonts:
+    - asset: assets/fonts/Pacifico-Regular.ttf
+
+  - family: CabinSketch
+    fonts:
+    - asset: assets/fonts/CabinSketch-Regular.ttf
+    - asset: assets/fonts/CabinSketch-Bold.ttf
+
+  - family: LuxuriousRoman
+    fonts:
+    - asset: assets/fonts/LuxuriousRoman-Regular.ttf 
+
+  - family: SourceSansPro
+    fonts:
+      - asset: assets/fonts/SourceSansPro-Black.ttf
+      - asset: assets/fonts/SourceSansPro-BlackItalic.ttf
+      - asset: assets/fonts/SourceSansPro-Bold.ttf
+      - asset: assets/fonts/SourceSansPro-BoldItalic.ttf
+      - asset: assets/fonts/SourceSansPro-Extralight.ttf
+      - asset: assets/fonts/SourceSansPro-ExtraLightItalic.ttf
+      - asset: assets/fonts/SourceSansPro-Italic.ttf
+      - asset: assets/fonts/SourceSansPro-Light.ttf
+
+  

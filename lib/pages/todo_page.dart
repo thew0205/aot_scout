@@ -58,7 +58,7 @@ class _TodoPageWidgetState extends State<TodoPageWidget> {
                       icon: Stack(
                         alignment: Alignment.center,
                         children: [
-                          Icon(Icons.next_week),
+                          const Icon(Icons.today),
                           Positioned(
                             right: 0,
                             top: 0,
@@ -94,7 +94,7 @@ class _TodoPageWidgetState extends State<TodoPageWidget> {
                       icon: Stack(
                         alignment: Alignment.center,
                         children: [
-                          Icon(Icons.today),
+                          const Icon(Icons.next_week),
                           Positioned(
                             right: 0,
                             top: 0,

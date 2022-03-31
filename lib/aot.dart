@@ -87,6 +87,13 @@ class MyApp extends StatelessWidget {
                           color: Colors.white,
                           fontFamily: 'CabinSketch',
                         ),
+                    subtitle1: Theme.of(
+                      context,
+                    ).textTheme.subtitle1!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontFamily: 'CabinSketch',
+                        ),
                   ),
                   textButtonTheme: TextButtonThemeData(
                     style: TextButton.styleFrom(
@@ -121,6 +128,20 @@ class MyApp extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                     ),
                   ),
+                  outlinedButtonTheme: OutlinedButtonThemeData(
+                    style: OutlinedButton.styleFrom(
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(fontFamily: 'CabinSketch'),
+                      elevation: 8,
+                      primary: kAppDarkColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: BorderSide(color: Colors.white, width: 10)),
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
                 ),
                 theme: ThemeData(
                   backgroundColor: kAppBackgroundColor,
@@ -146,9 +167,9 @@ class MyApp extends StatelessWidget {
                   ),
                   textTheme: TextTheme(
                     headline4: Theme.of(context).textTheme.headline4!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'CabinSketch',
-                        color: Colors.white),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'CabinSketch',
+                        ),
                     headline5: Theme.of(context).textTheme.headline5!.copyWith(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'CabinSketch',
@@ -158,9 +179,9 @@ class MyApp extends StatelessWidget {
                           fontFamily: 'CabinSketch',
                         ),
                     subtitle1: Theme.of(context).textTheme.subtitle1!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'CabinSketch',
-                        ),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'CabinSketch',
+                        color: Colors.white),
                   ),
                   textButtonTheme: TextButtonThemeData(
                     style: TextButton.styleFrom(
@@ -192,6 +213,21 @@ class MyApp extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
+                  outlinedButtonTheme: OutlinedButtonThemeData(
+                    style: OutlinedButton.styleFrom(
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(fontFamily: 'CabinSketch'),
+                      elevation: 8,
+                      primary: kAppDarkColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side:
+                              const BorderSide(color: Colors.black, width: 10)),
                       padding: const EdgeInsets.all(16),
                     ),
                   ),

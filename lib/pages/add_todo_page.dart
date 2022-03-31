@@ -29,10 +29,6 @@ class _TodoFormState extends State<TodoForm> {
     isNew = todo == null;
   }
 
-  void _back() {
-    Navigator.of(context).pop(null);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Center(

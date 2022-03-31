@@ -92,8 +92,7 @@ class Todolist with ChangeNotifier {
         };
       }).toList();
       _todos = temptodos.map((todo) => Todo.fromMap(todo)).toList();
-      print(_todos);
-      print(76868976);
+
       _todos.sort((todo, otherTodo) => todo.compareTime(otherTodo));
     }
     notifyListeners();
@@ -125,7 +124,6 @@ class Todolist with ChangeNotifier {
       var index =
           _todos.indexWhere((tempTodo) => todo[Todo.kId] == tempTodo.id);
       _todos[index] = Todo.fromMap(todo);
-      print(_todos);
       notifyListeners();
       return;
     } catch (exception) {

@@ -25,12 +25,13 @@ class _ThisWeekTodoPageState extends State<ThisWeekTodoPage> {
       appBar: AppBar(
         title: const Text('This week TODO'),
         actions: [
-          TextButton(
+          OutlinedButton(
             onPressed: () {
               setState(() {
                 isComplete = !isComplete;
               });
             },
+            style: Theme.of(context).outlinedButtonTheme.style,
             child: Text(
               isComplete ? "uncompleted" : "completd",
               style: Theme.of(context).textTheme.subtitle1,

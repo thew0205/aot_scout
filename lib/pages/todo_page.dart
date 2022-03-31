@@ -1,6 +1,7 @@
 import 'package:aot_scout/models/todolist.dart';
 import 'package:aot_scout/pages/this_week_todo_page.dart';
 import 'package:aot_scout/pages/today_todo.dart';
+import 'package:aot_scout/widgets/todo_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,89 +45,14 @@ class _TodoPageWidgetState extends State<TodoPageWidget> {
           return const Center(child: CircularProgressIndicator());
         } else {
           if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+            return Scaffold(body: Text(snapshot.error.toString()));
           } else {
             return Scaffold(
               body: currentIndex == 0
                   ? const TodayTodoPage()
                   : const ThisweekTodoPage(),
-              bottomNavigationBar: BottomNavigationBar(
-                selectedItemColor: Theme.of(context).primaryColor,
+              bottomNavigationBar: TodoBottomNavigationBar(
                 currentIndex: currentIndex,
-                items: [
-                  BottomNavigationBarItem(
-                      icon: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          const Icon(Icons.today),
-                          Positioned(
-                            right: 0,
-                            top: 0,
-                            child: CircleAvatar(
-                              backgroundColor: currentIndex == 0
-                                  ? Theme.of(context).primaryColor
-                                  : Theme.of(context).unselectedWidgetColor,
-                              radius: 6,
-                              child: Builder(
-                                builder: (context) {
-                                  return FittedBox(
-                                    child: Text(
-                                      '${context.watch<Todolist>().uncompletedTodayTodos.length}',
-                                      style: Theme.of(context)
-                                          .primaryTextTheme
-                                          .subtitle1!
-                                          .copyWith(
-                                            color: currentIndex == 0
-                                                ? Colors.white
-                                                : Colors.white54,
-                                          ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      label:
-                          'Today ${context.watch<Todolist>().uncompletedTodayTodos.length}'),
-                  BottomNavigationBarItem(
-                      icon: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          const Icon(Icons.next_week),
-                          Positioned(
-                            right: 0,
-                            top: 0,
-                            child: CircleAvatar(
-                              backgroundColor: currentIndex == 0
-                                  ? Theme.of(context).primaryColor
-                                  : Theme.of(context).unselectedWidgetColor,
-                              radius: 6,
-                              child: Builder(
-                                builder: (context) {
-                                  return FittedBox(
-                                    child: Text(
-                                      '${context.watch<Todolist>().uncompletedTodayTodos.length}',
-                                      style: Theme.of(context)
-                                          .primaryTextTheme
-                                          .subtitle1!
-                                          .copyWith(
-                                            color: currentIndex == 0
-                                                ? Colors.white
-                                                : Colors.white54,
-                                          ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      label:
-                          'Today ${context.watch<Todolist>().uncompletedTodayTodos.length}'),
-                ],
                 onTap: (index) {
                   setState(() {
                     currentIndex = index;

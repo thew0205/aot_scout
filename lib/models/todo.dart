@@ -60,7 +60,7 @@ class Todo extends ChangeNotifier {
 
   bool get completed => _completed;
 
-  set completed(bool completed) {
+  void changeCompleted(bool completed) {
     _completed = completed;
     notifyListeners();
   }

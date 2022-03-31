@@ -17,32 +17,30 @@ class TodoListtile extends StatelessWidget {
       padding: const EdgeInsets.all(1.5),
       child: Dismissible(
         key: ObjectKey(todo.id),
-        child: ListTile(
+        child: ExpansionTile(
           trailing: Checkbox(
+            activeColor: Theme.of(context).primaryColor,
             value: todo.completed,
             onChanged: (bool? val) async {
-              //  await Future.delayed(const Duration(milliseconds: 500));
-              await todos.completeTodo(todo);
+              await todos.chnageTodoCompletion(todo);
             },
           ),
           leading: SizedBox(
-              child: Text(
-            todo.importanceToString,
-            textAlign: TextAlign.center,
-          )),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            child: Text(
+              todo.importanceToString,
+              textAlign: TextAlign.center,
+            ),
           ),
-          //textColor: Theme.of(context).primaryColor,
-          tileColor: Theme.of(context).backgroundColor,
+          textColor:
+              Theme.of(context).textTheme.headline5!.color ?? Colors.black,
+          backgroundColor: Theme.of(context).backgroundColor,
+          collapsedBackgroundColor: Theme.of(context).backgroundColor,
           title: Text(
             todo.name,
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.headline5,
           ),
-          subtitle: ExpansionTile(
-            title: Text(todo.description),
-            children: [Text('${todo.toBeCompleted}')],
-          ),
+          subtitle: Text(todo.description),
+          children: [Text('${todo.toBeCompleted}')],
         ),
         onDismissed: (dismissedDirection) async {
           await todos.deleteTodo(todo);

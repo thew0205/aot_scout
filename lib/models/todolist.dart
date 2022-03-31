@@ -110,8 +110,9 @@ class Todolist with ChangeNotifier {
 
   bool completed = false;
 
-  Future<void> completeTodo(Todo todo) async {
-    todo.completed = true;
+  Future<void> chnageTodoCompletion(Todo todo) async {
+    todo.changeCompleted(!todo.completed);
+    await Future.delayed(const Duration(milliseconds: 500));
     await editTodo(todo.toMap());
     return;
   }

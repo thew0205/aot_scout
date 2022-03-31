@@ -35,13 +35,13 @@ class _TodoFormState extends State<TodoForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Form(
-          key: _form,
-          child: SizedBox(
-            height: 100,
+    return Center(
+      child: Material(
+        borderRadius: BorderRadius.circular(6),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+          child: Form(
+            key: _form,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -195,6 +195,10 @@ class _TodoFormState extends State<TodoForm> {
                     }
                   },
                 ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                )
               ],
             ),
           ),

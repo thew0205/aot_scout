@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/foundation.dart';
 
 enum Importance {
@@ -65,15 +66,17 @@ class Todo extends ChangeNotifier {
     notifyListeners();
   }
 
-  Todo(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.toBeCompleted,
-      Importance? importance,
-      bool? completed})
-      : importance = importance ?? Importance.important,
-        _completed = completed ?? false;
+  Todo({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.toBeCompleted,
+    Importance? importance,
+    bool? completed,
+  })  : importance = importance ?? Importance.important,
+        _completed = completed ?? false {
+    AndroidAlarmManager.oneShotAt(toBeCompleted, id, () {});
+  }
 
   Todo copyWith(
       {int? id,

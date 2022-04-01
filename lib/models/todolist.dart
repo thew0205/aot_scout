@@ -33,14 +33,16 @@ class Todolist with ChangeNotifier {
     final day = DateTime.now();
     return _todos
         .where((todo) => todo.toBeCompleted.day == day.day && todo.completed)
-        .toList();
+        .toList()
+      ..sort((todo, otherTodo) => todo.compareTime(otherTodo));
   }
 
   List<Todo> get uncompletedTodayTodos {
     final day = DateTime.now();
     return _todos
         .where((todo) => todo.toBeCompleted.day == day.day && !todo.completed)
-        .toList();
+        .toList()
+      ..sort((todo, otherTodo) => todo.compareTime(otherTodo));
   }
 
   List<Todo> get thisWeekTodos {
@@ -49,7 +51,8 @@ class Todolist with ChangeNotifier {
     return _todos.where((todo) {
       final day = todo.toBeCompleted.difference(today).inDays;
       return day > (todayDay - DateTime.daysPerWeek) || day < (1 - todayDay);
-    }).toList();
+    }).toList()
+      ..sort((todo, otherTodo) => todo.compareTime(otherTodo));
   }
 
   List<Todo> get completedThisWeekTodos {
@@ -60,7 +63,8 @@ class Todolist with ChangeNotifier {
       return ((day > (todayDay - DateTime.daysPerWeek) ||
               day < (1 - todayDay)) &&
           todo.completed);
-    }).toList();
+    }).toList()
+      ..sort((todo, otherTodo) => todo.compareTime(otherTodo));
   }
 
   List<Todo> get uncompletedThisWeekTodos {
@@ -74,7 +78,7 @@ class Todolist with ChangeNotifier {
     }).toList();
   }
 
-  Future<void> getTodo() async {
+  Future<void> initializeTodos() async {
     var todos = await database.getTodos();
 
     if (todos.isEmpty) {
@@ -109,7 +113,7 @@ class Todolist with ChangeNotifier {
     }
   }
 
-  bool completed = false;
+  // bool completed = false;
 
   Future<void> chnageTodoCompletion(Todo todo) async {
     todo.changeCompleted(!todo.completed);

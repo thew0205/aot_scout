@@ -22,6 +22,8 @@ dependencies:
   path: ^1.8.0
   path_provider: ^2.0.9
   connectivity_plus: ^2.2.1
+  android_alarm_manager_plus: ^2.0.5
+  audio_manager: ^0.8.2
 
 
 
@@ -39,6 +41,7 @@ flutter:
 
   assets:
     - assets/image/
+    - assets/music/
 
   fonts:
   - family: Pacifico

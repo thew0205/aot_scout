@@ -32,7 +32,7 @@ class _TodoPageWidgetState extends State<TodoPageWidget> {
   @override
   void initState() {
     super.initState();
-    future = context.read<Todolist>().getTodo();
+    future = context.read<Todolist>().initializeTodos();
   }
 
   var currentIndex = 0;

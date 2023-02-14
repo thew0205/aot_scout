@@ -50,21 +50,21 @@ class MyApp extends StatelessWidget {
                   ),
                   fontFamily: 'CabinSketch',
                   primaryColor: kAppDarkColor,
-                  appBarTheme: AppBarTheme(
-                    iconTheme: Theme.of(context)
-                        .iconTheme
-                        .copyWith(color: Colors.black),
-                    actionsIconTheme: Theme.of(context)
-                        .iconTheme
-                        .copyWith(color: Colors.black),
-                    titleTextStyle: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'CabinSketch',
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    color: kAppDarkColor,
-                  ),
+                  // appBarTheme: AppBarTheme(
+                  //   iconTheme: Theme.of(context)
+                  //       .iconTheme
+                  //       .copyWith(color: Colors.black),
+                  //   actionsIconTheme: Theme.of(context)
+                  //       .iconTheme
+                  //       .copyWith(color: Colors.black),
+                  //   titleTextStyle: const TextStyle(
+                  //     color: Colors.black,
+                  //     fontFamily: 'CabinSketch',
+                  //     fontSize: 25,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  //   color: kAppDarkColor,
+                  // ),
                   textTheme: TextTheme(
                     headline4: Theme.of(
                       context,
@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
                       context,
                     ).textTheme.subtitle1!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Colors.white,
                           fontFamily: 'CabinSketch',
                         ),
                   ),
@@ -130,15 +130,16 @@ class MyApp extends StatelessWidget {
                   ),
                   outlinedButtonTheme: OutlinedButtonThemeData(
                     style: OutlinedButton.styleFrom(
-                      textStyle: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(fontFamily: 'CabinSketch'),
+                      side: const BorderSide(color: Colors.red, width: 20),
+                      textStyle:
+                          Theme.of(context).textTheme.headline6!.copyWith(
+                                fontFamily: 'CabinSketch',
+                              ),
                       elevation: 8,
                       primary: kAppDarkColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.white, width: 10)),
+                          side: const BorderSide(color: Colors.red, width: 20)),
                       padding: const EdgeInsets.all(16),
                     ),
                   ),
@@ -179,9 +180,9 @@ class MyApp extends StatelessWidget {
                           fontFamily: 'CabinSketch',
                         ),
                     subtitle1: Theme.of(context).textTheme.subtitle1!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'CabinSketch',
-                        color: Colors.white),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'CabinSketch',
+                        ),
                   ),
                   textButtonTheme: TextButtonThemeData(
                     style: TextButton.styleFrom(
@@ -218,6 +219,7 @@ class MyApp extends StatelessWidget {
                   ),
                   outlinedButtonTheme: OutlinedButtonThemeData(
                     style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.red, width: 20),
                       textStyle: Theme.of(context)
                           .textTheme
                           .headline6!
@@ -226,8 +228,7 @@ class MyApp extends StatelessWidget {
                       primary: kAppDarkColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side:
-                              const BorderSide(color: Colors.black, width: 10)),
+                          side: const BorderSide(color: Colors.red, width: 20)),
                       padding: const EdgeInsets.all(16),
                     ),
                   ),

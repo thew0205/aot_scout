@@ -4,39 +4,17 @@ import 'package:aot_scout/widgets/todo_listtile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class TodayTodoPage extends StatefulWidget {
+class TodayTodoPage extends StatelessWidget {
   const TodayTodoPage({Key? key}) : super(key: key);
-
-  @override
-  State<TodayTodoPage> createState() => _TodayTodoPageState();
-}
-
-class _TodayTodoPageState extends State<TodayTodoPage> {
-  var isComplete = false;
 
   @override
   Widget build(BuildContext context) {
     final todos = context.watch<Todolist>();
 
-    var todayTodos =
-        isComplete ? todos.completedTodayTodos : todos.uncompletedTodayTodos;
+    var todayTodos = todos.completed
+        ? todos.completedTodayTodos()
+        : todos.uncompletedTodayTodos();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('TODO'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              setState(() {
-                isComplete = !isComplete;
-              });
-            },
-            child: Text(
-              isComplete ? "uncompleted" : "completd",
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          )
-        ],
-      ),
       body: todayTodos.isEmpty
           ? Center(
               child: Text(
@@ -62,7 +40,11 @@ class _TodayTodoPageState extends State<TodayTodoPage> {
         label: const Text('Add todo'),
         onPressed: () async {
           var todo = await showDialog(
-              context: context, builder: (_) => const TodoForm(istoday: true));
+              context: context,
+              builder: (_) => TodoForm(
+                    istoday: true,
+                    todos: todos,
+                  ));
           if (todo != null) {
             await todos.addTodo(todo);
             ScaffoldMessenger.of(context).showSnackBar(

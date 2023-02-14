@@ -1,6 +1,13 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:aot_scout/models/todo.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:open_file/open_file.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:audio_manager/audio_manager.dart';
 import 'package:aot_scout/pages/quiz_preview.dart';
 import 'package:aot_scout/pages/todo_page.dart';
 import 'package:aot_scout/widgets/button_widget.dart';
+import 'package:audio_manager/audio_manager.dart';
 
 import 'package:flutter/material.dart';
 
@@ -89,10 +96,31 @@ class HomePage extends StatelessWidget {
                                 .pushNamed(TitanListPage.page),
                           ),
                           Button(
-                            text: 'Setting Page',
-                            onPressed: () => Navigator.of(context)
-                                .pushNamed(SettingsPage.page),
-                          ),
+                              text: 'Setting Page',
+                              onPressed: () async {
+                                // AudioManager.instance.start(
+                                //   'file://${(await FilePicker.platform.pickFiles())!.files.single.path}',
+                                //   "alarm song",
+                                //   desc: "Alarm song",
+                                //   cover: "assets/image",
+                                // );
+                                final a = AssetsAudioPlayer();
+                                a.open(
+                                  Audio.file(
+                                    "${(await FilePicker.platform.pickFiles())!.files.single.path}",
+                                    metas: Metas(
+                                      title: "zazuu",
+                                      artist: "Florent Champigny",
+                                      album: "Yahoo",
+                                      image: const MetasImage.asset(
+                                          "assets/images//wings of freedom.png"), //can be MetasImage.network
+                                    ),
+                                  ),
+                                  showNotification: true,
+                                );
+                                Navigator.of(context)
+                                    .pushNamed(SettingsPage.page);
+                              }),
                         ],
                       ),
                     ),

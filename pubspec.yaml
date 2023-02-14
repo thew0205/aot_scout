@@ -24,6 +24,10 @@ dependencies:
   connectivity_plus: ^2.2.1
   android_alarm_manager_plus: ^2.0.5
   audio_manager: ^0.8.2
+  open_file: ^3.2.1
+  file_picker: ^4.5.1
+  assets_audio_player: ^3.0.4+1
+  flutter_local_notifications: ^9.4.0
 
 
 

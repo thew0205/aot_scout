@@ -35,7 +35,7 @@ class TodoBottomNavigationBar extends StatelessWidget {
                       builder: (context) {
                         return FittedBox(
                           child: Text(
-                            '${context.watch<Todolist>().uncompletedTodayTodos.length}',
+                            '${context.watch<Todolist>().uncompletedTodayTodos().length}',
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .subtitle1!
@@ -53,7 +53,7 @@ class TodoBottomNavigationBar extends StatelessWidget {
               ],
             ),
             label:
-                'Today ${context.watch<Todolist>().uncompletedTodayTodos.length}'),
+                'Today ${context.watch<Todolist>().uncompletedTodayTodos().length}'),
         BottomNavigationBarItem(
             icon: Stack(
               alignment: Alignment.center,
@@ -71,7 +71,7 @@ class TodoBottomNavigationBar extends StatelessWidget {
                       builder: (context) {
                         return FittedBox(
                           child: Text(
-                            '${context.watch<Todolist>().uncompletedTodayTodos.length}',
+                            '${context.watch<Todolist>().uncompletedTodayTodos().length}',
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .subtitle1!
@@ -89,7 +89,7 @@ class TodoBottomNavigationBar extends StatelessWidget {
               ],
             ),
             label:
-                'This week ${context.watch<Todolist>().uncompletedTodayTodos.length}'),
+                'Other ${context.watch<Todolist>().uncompletedOtherTodos().length}'),
       ],
       onTap: onTap,
     );

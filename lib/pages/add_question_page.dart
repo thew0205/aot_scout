@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:aot_scout/models/question.dart';
 import 'package:aot_scout/widgets/button_widget.dart';
-import 'package:aot_scout/widgets/option_fieldform.dart';
+import 'package:aot_scout/widgets/fieldform.dart';
 import 'package:aot_scout/widgets/question_textfield.dart';
 
 class QuestionForm extends StatefulWidget {

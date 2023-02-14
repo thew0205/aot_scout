@@ -40,10 +40,11 @@ class DB {
         await database.execute('''CREATE TABLE ${Todolist.dbName}(
           ${Todo.kId} INTEGER PRIMARY KEY AUTOINCREMENT, 
           ${Todo.kName} TEXT NOT NULL,
-          ${Todo.kDecription} TEXT NOT NULL,
+          ${Todo.kDescription} TEXT NOT NULL,
           ${Todo.kToBeCompleted} TEXT NOT NULL,
           ${Todo.kImportance} INTEGER NOT NULL,
-          ${Todo.kCompleted} BOOLEAN NOT NULL
+          ${Todo.kCompleted} BOOLEAN NOT NULL,
+          ${Todo.kLabel} TEXT NOT NULL
         )''');
       },
     );
@@ -71,15 +72,16 @@ class DB {
 
   Future<int> addTodo(Map<String, Object?> todo) async {
     return (await database).rawInsert(
-      ''' INSERT INTO  ${Todolist.dbName}(${Todo.kName}, ${Todo.kDecription} , ${Todo.kToBeCompleted},
-      ${Todo.kImportance},${Todo.kCompleted})
-      VALUES (?, ?, ?, ?, ?)''',
+      ''' INSERT INTO  ${Todolist.dbName}(${Todo.kName}, ${Todo.kDescription} , ${Todo.kToBeCompleted},
+      ${Todo.kImportance},${Todo.kCompleted},${Todo.kLabel})
+      VALUES (?, ?, ?, ?, ?, ?)''',
       [
         todo[Todo.kName],
-        todo[Todo.kDecription],
+        todo[Todo.kDescription],
         todo[Todo.kToBeCompleted],
         todo[Todo.kImportance],
-        todo[Todo.kCompleted]
+        todo[Todo.kCompleted],
+        todo[Todo.kLabel]
       ],
     );
   }
@@ -99,15 +101,16 @@ class DB {
 
   Future<int> editTodo(Map<String, Object?> todo) async {
     return (await database).rawUpdate(
-      '''UPDATE  ${Todolist.dbName} SET ${Todo.kName} = ?, ${Todo.kDecription} = ?,
-      ${Todo.kToBeCompleted} = ?,${Todo.kImportance} = ?,${Todo.kCompleted} = ?
+      '''UPDATE  ${Todolist.dbName} SET ${Todo.kName} = ?, ${Todo.kDescription} = ?,
+      ${Todo.kToBeCompleted} = ?,${Todo.kImportance} = ?,${Todo.kCompleted} = ?,${Todo.kLabel} = ?
       WHERE ${Todo.kId}= ${todo[Todo.kId]}''',
       [
         todo[Todo.kName],
-        todo[Todo.kDecription],
+        todo[Todo.kDescription],
         todo[Todo.kToBeCompleted],
         todo[Todo.kImportance],
-        todo[Todo.kCompleted]
+        todo[Todo.kCompleted],
+        todo[Todo.kLabel]
       ],
     );
   }

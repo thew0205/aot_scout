@@ -22,7 +22,7 @@ class TodoListtile extends StatelessWidget {
             activeColor: Theme.of(context).primaryColor,
             value: todo.completed,
             onChanged: (bool? val) async {
-              await todos.chnageTodoCompletion(todo);
+              await todos.changeTodoCompletion(todo);
             },
           ),
           leading: SizedBox(

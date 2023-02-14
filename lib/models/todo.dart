@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:audio_manager/audio_manager.dart';
 import 'package:flutter/foundation.dart';
 
 enum Importance {
@@ -9,13 +9,25 @@ enum Importance {
   leastImportant,
 }
 
+String stringFromImportance(Importance importance) {
+  switch (importance) {
+    case Importance.leastImportant:
+      return "Least important";
+    case Importance.important:
+      return "Important";
+    case Importance.veryImportant:
+      return "Very important";
+  }
+}
+
 class Todo extends ChangeNotifier {
   static const kId = 'id';
   static const kName = 'name';
-  static const kDecription = 'decription';
+  static const kDescription = 'description';
   static const kToBeCompleted = 'toBeCompleted';
   static const kCompleted = 'bool';
   static const kImportance = 'importance';
+  static const kLabel = 'label';
 
   static Importance importanceFromInt(int importance) {
     switch (importance) {
@@ -41,6 +53,25 @@ class Todo extends ChangeNotifier {
     }
   }
 
+  static final audioManager = AudioManager.instance;
+  static void setAlarm() async {
+    // final a = AssetsAudioPlayer();
+    // a.open(
+    //   Audio(
+    //     "assets/music/zazuu.mp3",
+    //     metas: Metas(
+    //       title: "zazuu",
+    //       artist: "Florent Champigny",
+    //       album: "Yahoo",
+    //       image: const MetasImage.asset(
+    //           "assets/images//wings of freedom.png"), //can be MetasImage.network
+    //     ),
+    //   ),
+    //   showNotification: true,
+    // );
+    debugPrint('alarm');
+  }
+
   String get importanceToString {
     switch (importance) {
       case Importance.leastImportant:
@@ -58,6 +89,7 @@ class Todo extends ChangeNotifier {
   final DateTime toBeCompleted;
   final Importance importance;
   bool _completed;
+  final String label;
 
   bool get completed => _completed;
 
@@ -71,27 +103,30 @@ class Todo extends ChangeNotifier {
     required this.name,
     required this.description,
     required this.toBeCompleted,
+    required this.label,
     Importance? importance,
     bool? completed,
   })  : importance = importance ?? Importance.important,
-        _completed = completed ?? false {
-    AndroidAlarmManager.oneShotAt(toBeCompleted, id, () {});
-  }
+        _completed = completed ?? false;
 
-  Todo copyWith(
-      {int? id,
-      String? name,
-      String? description,
-      DateTime? toBeCompleted,
-      bool? completed,
-      Importance? importance}) {
+  Todo copyWith({
+    int? id,
+    String? name,
+    String? description,
+    DateTime? toBeCompleted,
+    bool? completed,
+    Importance? importance,
+    String? label,
+  }) {
     return Todo(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        description: description ?? this.description,
-        toBeCompleted: toBeCompleted ?? this.toBeCompleted,
-        completed: completed ?? _completed,
-        importance: importance ?? this.importance);
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      toBeCompleted: toBeCompleted ?? this.toBeCompleted,
+      completed: completed ?? _completed,
+      importance: importance ?? this.importance,
+      label: label ?? this.label,
+    );
   }
 
   int compareTime(Todo otherTodo) {
@@ -109,10 +144,11 @@ class Todo extends ChangeNotifier {
     return {
       kId: id,
       kName: name,
-      kDecription: description,
+      kDescription: description,
       kToBeCompleted: toBeCompleted.toIso8601String(),
       kCompleted: _completed ? 1 : 0,
       kImportance: importanceToInt(importance),
+      kLabel: label,
     };
   }
 
@@ -120,10 +156,11 @@ class Todo extends ChangeNotifier {
     return Todo(
       id: map[kId],
       name: map[kName] ?? '',
-      description: map[kDecription] ?? '',
+      description: map[kDescription] ?? '',
       toBeCompleted: DateTime.parse(map[kToBeCompleted]),
       completed: map[kCompleted] == 1,
       importance: importanceFromInt(map[kImportance]),
+      label: map[kLabel],
     );
   }
 
